@@ -1,0 +1,111 @@
+/*Global*/
+
+body {
+    height: 100%;
+    color: #ecf0f1;
+    font-family: 'Lato', sans-serif;
+    background: -webkit-linear-gradient(90deg, #1D976C 10%, #93F9B9 100%);
+    background: -moz-linear-gradient(90deg, #1D976C 10%, #93F9B9 100%);
+    background: -ms-linear-gradient(90deg, #1D976C 10%, #93F9B9 100%);
+    background: -o-linear-gradient(90deg, #1D976C 10%, #93F9B9 100%);
+    background: linear-gradient(90deg, #1D976C 10%, #93F9B9 100%);
+}
+
+::selection {
+    color: #ecf0f1;
+    background: rgb(51, 51, 51);
+}
+
+h1 small {
+    color: #ecf0f1;
+    font-size: 20px;
+}
+
+
+/*Header*/
+
+.page-header {
+    padding-left: 30px;
+}
+
+#header-text {
+    font-size: 60px;
+}
+
+.page-header .glyphicon {
+    font-size: 45px;
+    padding-left: 15px;
+}
+
+
+/*Body*/
+
+.body {
+    padding: 20px;
+}
+
+.module-container {
+    text-shadow: 2px 4px 3px rgba(0, 0, 0, 0.3);
+}
+
+.color-module {
+    height: 240px;
+    width: 280px;
+}
+
+.color-module-row {
+    padding-top: 0px;
+}
+
+.color-module h1 {
+    color: #ecf0f1;
+    padding-top: 110px;
+    padding-left: 60px;
+    position: absolute;
+}
+
+
+/*Individual Colors*/
+
+#facebook {
+    background-color: #3b5998;
+}
+
+#linkedin {
+    background-color: #007bb5;
+}
+
+#instagram {
+    background-color: #517fa4;
+}
+
+#pinterest {
+    background-color: #cb2027;
+}
+
+#twitter {
+    background-color: #0084b4;
+}
+
+#googlePlus {
+    background: #dd4b39;
+}
+
+
+/*Responsive Styling*/
+
+@media (max-width: 768px) {
+    .body {
+        padding: 0px;
+    }
+    .color-module {
+        position: relative;
+        ;
+    }
+    .color-module h1 {
+        position: relative;
+    }
+    .color-module-row {
+        padding-top: 0px;
+    }
+}
