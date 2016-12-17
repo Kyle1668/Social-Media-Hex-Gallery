@@ -1,7 +1,7 @@
 
 
 /*
-    Initial animation function. Only ran when screen width is greater than 320 pixels. When called, the module's
+    Initial animation function. Only run when screen width is greater than 320 pixels. When called, the module's
     height that is being hovered over increases by 10%. the .hover() method's first argument is responsible
     for this height increase. The second argument returns the module to its original height
     when the user's cursor leaves the module.
@@ -11,15 +11,15 @@ function moduleHover(module) {
     const originalHeight = $(module).height();
     const addedHeight = originalHeight * .10;
 
-    if ($(window).width() > 320) { // Animation won't occur if screen width is less than 320px.
+    if ($(window).width() > 320) {
         $(module).hover(
-            function() {
+            function() {    // Cursor Enters
                 $(this).animate({ // Module's height grows by 10%.
                     height: originalHeight + addedHeight
                 }, 220);
             },
-            function() { // Module's height return to it's initial dimensions.
-                $(this).animate({
+            function() { // Cursor Leaves
+                $(this).animate({ // Module's height return to it's initial dimensions.
                     height: originalHeight
                 }, 220);
             }
@@ -28,30 +28,32 @@ function moduleHover(module) {
 }
 
 
-
+/*
+    The function is responsible for the copying of the hex value of the selected module. When called, the
+    function creates an invisible "<textarea></textarea>" element within the DOM. The argument is
+    given to the value (content) of the element. As the name denotes, the .select() method selects
+    texture and it's assigned value. document.execCommand('copy') copies the selected element
+    (remember .select?) to the clipboard.
+*/
 function copyHex(module) {
-
     const textArea = document.createElement("textarea");
     textArea.value = module;
 
     document.body.appendChild(textArea);
     textArea.select();
 
-    try {
-        const successful = document.execCommand('copy');
-        const msg = successful ? 'successful' : 'unsuccessful';
-    } catch (err) {
-        console.log('Unable to copy');
-    }
-
+    document.execCommand('copy');
     document.body.removeChild(textArea);
 }
 
 
-
+/*
+    Function uses the id of the called module to identify which module class the user clicked.
+    Based on the id of the module that's clicked, the corresponding hex value is called as the
+    argument to the copyHex() function.
+*/
 function pasteHex(module) {
 
-    // moduleID uses the id of the called module to identify which one the user clicked.
     const moduleID = $(module).attr("id");
 
     switch (moduleID) {
@@ -78,14 +80,18 @@ function pasteHex(module) {
 }
 
 
-
+/*
+    Function uses the id of the called module to identify which module class the user clicked.
+    Based on the id of the module that's clicked, the corresponding hex value is called as the
+    argument to the copyHex() function.
+*/
 function moduleSelect(module) {
 
     const originalWidth = $(module).width();
     const widthAdded = originalWidth * .10;
 
     $(module).click(function() {
-        if ($(window).width() > 320) { // Animation won't occur if screen width is less than 320px.
+        if ($(window).width() > 320) {
             $(this).animate({
                 width: originalWidth + widthAdded
             }, 220);
@@ -97,7 +103,11 @@ function moduleSelect(module) {
 }
 
 
-
+/*
+    Called when user the cursor leaves a hovered/selected module. When called, the
+    function returns the expanded width of the module to its original dimension
+    and rmeoved the "Copied!" test after 500 milliseconds.
+*/
 function moduleDeselect(module) {
 
     const originalWidth = $(module).width();
@@ -110,14 +120,14 @@ function moduleDeselect(module) {
             }, 220);
         }
 
-        setTimeout(function() { // The "Copied" text is removed.
+        setTimeout(function() { // "Copied" text is removed.
             $(".selectText").remove();
         }, 500);
     });
 }
 
 
-
+// Calls the above functions when the DOM is finished rendering.
 $(document).ready(function() {
 
     moduleHover(".color-module");
