@@ -1,42 +1,30 @@
+
+
+/*
+    Initial animation function. Only ran when screen width is greater than 320 pixels. When called, the module's
+    height that is being hovered over increases by 10%. the .hover() method's first argument is responsible
+    for this height increase. The second argument returns the module to its original height
+    when the user's cursor leaves the module.
+*/
 function moduleHover(module) {
 
     const originalHeight = $(module).height();
     const addedHeight = originalHeight * .10;
 
-    if ($(window).width() > 320) {  // Animation won't occur if screen width is less than 320px.
+    if ($(window).width() > 320) { // Animation won't occur if screen width is less than 320px.
         $(module).hover(
             function() {
-                $(this).animate({    // Module's height grows by 10%.
+                $(this).animate({ // Module's height grows by 10%.
                     height: originalHeight + addedHeight
                 }, 220);
             },
-            function() {    // Module's height return to it's initial dimensions.
+            function() { // Module's height return to it's initial dimensions.
                 $(this).animate({
                     height: originalHeight
                 }, 220);
             }
         );
     }
-}
-
-
-
-function moduleDeselect(module) {
-
-    const originalWidth = $(module).width();
-    const subtractedWidth = originalWidth * .01;
-
-    $(module).mouseleave(function() {
-        if ($(window).width() > 320) {
-            $(this).animate({
-                width: originalWidth - subtractedWidth
-            }, 220);
-        }
-
-        setTimeout(function() { // The "Copied" text is removed when the module is left.
-            $(".selectText").remove();
-        }, 500);
-    });
 }
 
 
@@ -97,7 +85,7 @@ function moduleSelect(module) {
     const widthAdded = originalWidth * .10;
 
     $(module).click(function() {
-        if ($(window).width() > 320) {  // Animation won't occur if screen width is less than 320px.
+        if ($(window).width() > 320) { // Animation won't occur if screen width is less than 320px.
             $(this).animate({
                 width: originalWidth + widthAdded
             }, 220);
@@ -105,6 +93,26 @@ function moduleSelect(module) {
 
         $(this).append("<h1 class = 'selectText'>Copied!</h1>");
         pasteHex(this); // Calls function that posts the argument's hex to the clipboard.
+    });
+}
+
+
+
+function moduleDeselect(module) {
+
+    const originalWidth = $(module).width();
+    const subtractedWidth = originalWidth * .01;
+
+    $(module).mouseleave(function() {
+        if ($(window).width() > 320) {
+            $(this).animate({
+                width: originalWidth - subtractedWidth
+            }, 220);
+        }
+
+        setTimeout(function() { // The "Copied" text is removed.
+            $(".selectText").remove();
+        }, 500);
     });
 }
 
