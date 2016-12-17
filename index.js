@@ -1,18 +1,18 @@
 function moduleHover(module) {
 
-    const moduleHeight = $(module).height();
-    const heightGrow = moduleHeight * .10;
+    const originalHeight = $(module).height();
+    const addedHeight = originalHeight * .10;
 
-    if ($(window).width() > 320) {
+    if ($(window).width() > 320) {  // Animation won't occur if screen width is less than 320px.
         $(module).hover(
             function() {
-                $(this).animate({
-                    height: moduleHeight + heightGrow
+                $(this).animate({    // Module's height grows by 10%.
+                    height: originalHeight + addedHeight
                 }, 220);
             },
-            function() {
+            function() {    // Module's height return to it's initial dimensions.
                 $(this).animate({
-                    height: moduleHeight
+                    height: originalHeight
                 }, 220);
             }
         );
@@ -23,17 +23,17 @@ function moduleHover(module) {
 
 function moduleDeselect(module) {
 
-    const moduleWidth = $(module).width();
-    const widthShrink = moduleWidth * .01;
+    const originalWidth = $(module).width();
+    const subtractedWidth = originalWidth * .01;
 
     $(module).mouseleave(function() {
         if ($(window).width() > 320) {
             $(this).animate({
-                width: moduleWidth - widthShrink
+                width: originalWidth - subtractedWidth
             }, 220);
         }
 
-        setTimeout(function() {
+        setTimeout(function() { // The "Copied" text is removed when the module is left.
             $(".selectText").remove();
         }, 500);
     });
@@ -63,6 +63,7 @@ function copyHex(module) {
 
 function pasteHex(module) {
 
+    // moduleID uses the id of the called module to identify which one the user clicked.
     const moduleID = $(module).attr("id");
 
     switch (moduleID) {
@@ -92,13 +93,13 @@ function pasteHex(module) {
 
 function moduleSelect(module) {
 
-    const moduleWidth = $(module).width();
-    const widthGrow = moduleWidth * .10;
+    const originalWidth = $(module).width();
+    const widthAdded = originalWidth * .10;
 
     $(module).click(function() {
-        if ($(window).width() > 320) {
+        if ($(window).width() > 320) {  // Animation won't occur if screen width is less than 320px.
             $(this).animate({
-                width: moduleWidth + widthGrow
+                width: originalWidth + widthAdded
             }, 220);
         }
 
