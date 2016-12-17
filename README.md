@@ -7,7 +7,9 @@ With responsive design in mind, I utilized Bootstrap's mobile-first grid system 
 Functionality and animation were developed primarily with jQuery and some vanilla Javascript.
 
 Additionally, I used the "const" type instead of the traditional "var" which was introduced is ES6.
-This was done to ensure immutability and utilize const's block level scope. 
+This was done to ensure immutability and utilize const's block level scope.
+
+Live : https://kyle1668.github.io/Social-Media-Hex-Gallery/
 
 #### Technologies Used
 1. HTML5
