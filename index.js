@@ -36,14 +36,14 @@ function moduleHover(module) {
     (remember .select?) to the clipboard.
 */
 function copyHex(module) {
-    const textArea = document.createElement("textarea");
-    textArea.value = module;
+    const textArea = document.createElement("textarea");    // text area element is created.
+    textArea.value = module;    // The content of text area is set to the argument.
 
-    document.body.appendChild(textArea);
-    textArea.select();
+    document.body.appendChild(textArea);    // Element is added to the documents body off-screen.
+    textArea.select();  //  Element is selected
 
-    document.execCommand('copy');
-    document.body.removeChild(textArea);
+    document.execCommand('copy');   //  text area's contents are copied to the clipboard.
+    document.body.removeChild(textArea);    // The element is removed. 
 }
 
 
